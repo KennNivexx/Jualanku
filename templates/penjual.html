@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Jualanku - Penjual</title>
+    <link rel="stylesheet" href="/static/css/penjual.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <img src="/static/images/fallback.png" alt="Logo" class="logo" />
+        <h1 class="title">Dashboard Penjual</h1>
+      </div>
+      <div class="stats">
+        <span id="menu-count">0 Menu</span>
+        <span id="order-count">0 Pesanan</span>
+      </div>
+    </header>
+    <main class="grid">
+      <section class="card">
+        <div class="card-head">
+          <h2>Daftar & Tambah Menu</h2>
+          <button id="btn-add-menu" class="btn primary">+ Tambah Menu</button>
+        </div>
+        <div class="table-wrap">
+          <table class="table" id="menu-table">
+            <thead>
+              <tr>
+                <th>Gambar</th>
+                <th>Nama</th>
+                <th>Harga</th>
+                <th>Kategori</th>
+                <th>Tindakan</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-head">
+          <h2>Pesanan Masuk</h2>
+          <button id="btn-refresh" class="btn">Refresh</button>
+        </div>
+        <div class="table-wrap">
+          <table class="table" id="order-table-in">
+            <thead>
+              <tr>
+                <th>Waktu</th>
+                <th>Pembeli</th>
+                <th>Nomor Meja</th>
+                <th>Item</th>
+                <th>Total</th>
+                <th>Tindakan</th>
+              </tr>
+            </thead>
+            <tbody id="orders_paid"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-head"><h2>Pesanan Selesai</h2></div>
+        <div class="table-wrap">
+          <table class="table" id="order-table-done">
+            <thead>
+              <tr>
+                <th>Waktu</th>
+                <th>Pembeli</th>
+                <th>Nomor Meja</th>
+                <th>Item</th>
+                <th>Total</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+            <span></span>
+          </table>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-head">
+          <h2>Laporan Penjualan</h2>
+        </div>
+        <div class="table-wrap">
+          <div class="filter">
+            <label>Dari: <input type="date" id="startDate" /></label>
+            <label>Sampai: <input type="date" id="endDate" /></label>
+            <button id="btnFilter">Tampilkan</button>
+            <button id="btnDownload">Download CSV</button>
+          </div>
+
+          <div class="chart-container">
+            <canvas id="reportChart"></canvas>
+          </div>
+
+          <div class="table-container">
+            <table id="reportTable">
+              <thead>
+                <tr>
+                  <th>Tanggal</th>
+                  <th>Total Pendapatan</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- modal tambah/edit -->
+      <div class="form-row">
+        <div class="form-group">
+          <div class="modal" id="menu-modal">
+            <div class="modal-content">
+              <div class="modal-head">
+                <h3 id="menu-modal-title">Tambah Menu</h3>
+                <button class="icon-btn" data-close>✕</button>
+              </div>
+              <form id="menu-form">
+                <input type="hidden" id="menu-id" />
+                <label
+                  >Nama Menu <input type="text" id="menu-name" required
+                /></label>
+                <label
+                  >Harga (Rp)
+                  <input
+                    type="number"
+                    id="menu-price"
+                    min="0"
+                    step="100"
+                    required
+                /></label>
+                <label
+                  >Masukkan Gambar
+                  <input
+                    type="text"
+                    id="menu-img"
+                    placeholder="/static/images/fallback.png"
+                /></label>
+                <label
+                  >Kategori
+                  <select id="menu-kategori">
+                    <option value="makanan">Makanan</option>
+                    <option value="minuman">Minuman</option>
+                    <option value="dessert">Dessert</option>
+                  </select>
+                </label>
+                <div class="modal-actions">
+                  <button type="button" class="btn" data-close>Batal</button>
+                  <button type="submit" class="btn primary">Simpan</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div id="toast" class="toast"></div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/static/js/penjual.js" defer></script>
+  </body>
+</html>

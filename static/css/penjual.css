@@ -1,0 +1,245 @@
+:root {
+  --bg: #f5f7fb;
+  --card: #fff;
+  --text: #111;
+  --muted: #6b7280;
+  --primary: #10b981;
+  --danger: #ef4444;
+  --border: #cbccb9;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Inter, Arial, sans-serif;
+  background: linear-gradient(to bottom, skyblue, white);
+  color: var(--text);
+}
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 18px;
+  background: linear-gradient(to right, grey, wheat, skyblue);
+  animation: topbar 12s ease infinite;
+  background-size: 300% 300%;
+  position: sticky;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  color: #ffffff;
+  top: 0;
+  z-index: 10;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 18px;
+}
+.card {
+  background: linear-gradient(to bottom, wheat, white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.card-head {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+}
+.table-wrap {
+  overflow: auto;
+  padding: 12px;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table th,
+.table td {
+  padding: 10px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+.btn {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 0;
+  background: #e5e7eb;
+  cursor: pointer;
+}
+.btn.primary {
+  background: var(--primary);
+  color: #fff;
+}
+.btn.primary:hover {
+  color: white;
+  background: #2fe57b; /* hijau */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+.btn.danger {
+  background: var(--danger);
+  color: #fff;
+}
+.btn.danger:hover {
+  color: white;
+  background: #ff4c4c; /* merah */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+.badge-success {
+  color: #98fb98;
+  background: #14532d; /* hijau tua */
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: inline-block;
+}
+.badge-success:hover {
+  color: white;
+  background: #2ecc71; /* hijau */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.modal .modal-content {
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 12px;
+  max-width: 520px;
+  width: 100%;
+}
+.toast {
+  position: fixed;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111;
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 10px;
+  display: none;
+}
+.status-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+.status-dibayar {
+  background: #d1fae5;
+  color: #065f46;
+}
+.status-selesai {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+@keyframes topbar {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+/* Form checkout */
+.form-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.form-group {
+  flex: 1; /* biar sama rata lebarnya */
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #cf7070; /* biar kontras sama background merah */
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #924f4f;
+  border-radius: 6px;
+  font-size: 14px;
+}
+.divider {
+  height: 5px;
+  background: linear-gradient(to right, grey, #fff, skyblue);
+  margin: 14px 0;
+}
+.filter {
+  margin: 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.filter input,
+.filter button {
+  padding: 0.4rem 0.6rem;
+}
+.chart-container {
+  width: 80%;
+  margin: 1rem auto;
+  background: #ffffff;
+}
+.chart-container canvas {
+  width: 100% !important;
+  height: auto !important;
+}
+.table_container {
+  width: 80%;
+  margin: 1rem auto;
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 6px;
+  overflow: hidden;
+}
+#reportTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+#reportTable th,
+#reportTable td {
+  padding: 0.6rem;
+  border: 1px solid #893737;
+  text-align: center;
+}
